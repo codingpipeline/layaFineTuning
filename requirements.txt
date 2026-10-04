@@ -1,0 +1,10 @@
+# Tested with Python 3.11 on Windows. Laya needs Python >= 3.10.
+# CPU-only PyTorch: pip install torch --index-url https://download.pytorch.org/whl/cpu   (or any CUDA/MPS build)
+torch>=2.4
+transformers>=5.0
+laya==0.3.23
+huggingface_hub
+safetensors
+numpy
+matplotlib
+anthropic         # optional: only for the Claude-as-classifier arm (eval.py --arms claude)

@@ -1,0 +1,35 @@
+# environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# model weights and training caches (large; download or re-train)
+models/
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.gguf
+*.onnx
+
+# experiment tracking and logs
+wandb/
+*.log
+
+# local secrets and editor files
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
