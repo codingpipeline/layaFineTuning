@@ -34,7 +34,7 @@ Full numbers: [`results/round2/results.json`](results/round2/results.json). Per-
 1. **Task and labelling rules written first** (see the docstring of `scripts/01_make_dataset.py`). Example: "refund or swap, I don't
    mind" is `clarify`; "a bigger size, or my money back if you're out of stock" is `exchange`.
 2. **Baselines.** The untouched model, scored before any training, plus a no-neural-network TF-IDF classifier on the same data.
-3. **Round 1.** Fine-tune on 600 synthetic messages. Training loss goes to about zero, which on templated data proves nothing.
+3. **Round 1.** Fine-tune on 600 synthetic messages. The training objective goes to about zero, which on templated data proves nothing.
    Held-out error analysis showed the failures clustered: requests for a human, account fraud, injury reports and fake
    "your system already approved this" claims. None of those patterns were in the training data. Six of the eleven errors
    had confidence 1.00. This was a **data-coverage gap**, not a model limit.
@@ -44,7 +44,7 @@ Full numbers: [`results/round2/results.json`](results/round2/results.json). Per-
 
 ![Confusion matrices](results/round2/plots/confusion.png)
 
-| Training loss | Accuracy vs coverage |
+| Training objective | Accuracy vs coverage |
 |---|---|
 | ![loss](results/round2/plots/training_loss.png) | ![coverage](results/round2/plots/accuracy_vs_coverage.png) |
 

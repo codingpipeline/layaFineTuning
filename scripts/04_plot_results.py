@@ -71,15 +71,16 @@ if os.path.exists("results/round2/training_log.csv"):
         loss = np.array([float(r["loss"]) for r in rows])
         ep = np.array([int(r["epoch"]) for r in rows])
         fig, ax = plt.subplots(figsize=(7, 4))
-        ax.plot(loss, alpha=0.3, color="#1f77b4", label="per-10-batch loss")
+        ax.plot(loss, alpha=0.3, color="#1f77b4", label="per-10-batch objective")
         k = 5
         if len(loss) > k:
             ax.plot(np.arange(k - 1, len(loss)), np.convolve(loss, np.ones(k) / k, "valid"), color="#1f77b4", label="moving avg")
         for e in sorted(set(ep))[1:]:
             ax.axvline(np.argmax(ep == e), color="gray", ls=":", lw=0.8)
         ax.set_xlabel("logged step (every 10 micro-batches); dotted = epoch boundary")
-        ax.set_ylabel("loss")
-        ax.set_title("Laya fine-tuning on 600 synthetic return requests")
+        ax.axhline(0, color="gray", lw=0.6)
+        ax.set_ylabel("total objective (cross-entropy + policy-gradient term)", fontsize=8)
+        ax.set_title("Laya fine-tuning on 640 synthetic return requests (round 2)\nThe objective can dip below 0: its policy-gradient term is zero-mean noise", fontsize=10)
         ax.legend()
         fig.tight_layout()
         fig.savefig("results/round2/plots/training_loss.png", dpi=160)
